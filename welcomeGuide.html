@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full overflow-hidden select-none">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PPGEC UFV | Incoming Students Welcome 2026-1</title>
+    
+    <!-- ESSENTIAL CDNs -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+            onload="renderMathInElement(document.body, { delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}], throwOnError: false });"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=PT+Sans+Narrow:wght@400;700&display=swap" rel="stylesheet">
+
+    <script>
+        const COURSE_ASSETS = {
+            logos: {
+                ufv: "Logo UFV oficial horizontal.png",
+                pms: "ppgec.png",
+                dec: "Logo DEC oficial.png"
+            },
+            
+            slideBackgrounds: {
+                "0_0": "bg0.png",
+                "1_0": "bg6gold.png",
+                "2_0": "bg1.png",
+                "2_1": "bg1.png",
+                "2_2": "bg1.png",
+                "3_0": "bg3.png",
+                "3_1": "bg3.png",
+                "4_0": "bg4.png",
+                "5_0": "bg5.png",
+                "6_0": "bg6.png",
+                "7_0": "bg7.png",
+                "8_0": "bg8.png"
+            },
+
+            externalLinks: {
+                presentationAccess: "https://posengenhariacivil.ufv.br",
+                ppgecPortal: "https://posengenhariacivil.ufv.br",
+                ppgUfv: "https://ppg.ufv.br/pos-graduacao/scricto-sensu/"
+            },
+
+            qrCodeGenerator: (url, color = "c47a4d") => 
+                `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(url)}&color=${color}`
+        };
+    </script>
+
+    <style>
+        :root {
+            --ppgec-brown: #c47a4d;
+            --ppgec-blue: #2f80ed;
+            --ppgec-green: #27ae60;
+            --ppgec-dgray: #7d7f81;
+            --ppgec-lgray: #d8d8d8;
+            --pms-bg: #F4F6F5;
+
+            --pms-card-light: rgba(255, 255, 255, 0.65);
+            --pms-card-dark: rgba(51, 51, 51, 0.70);
+            --pms-text-muted: #444444;
+
+            --font-title: 'Montserrat', sans-serif;
+            --font-body: 'PT Sans Narrow', sans-serif;
+
+            --fluid-h1: clamp(2.8rem, 6.0vw, 5.0rem);
+            --fluid-h2: clamp(2.2rem, 4.5vw, 3.5rem);
+            --fluid-h3: clamp(1.7rem, 3.2vw, 2.4rem);
+            --fluid-body: clamp(1.3rem, 2.2vw, 1.75rem);
+            --fluid-meta: clamp(1.1rem, 1.6vw, 1.45rem);
+            --fluid-tag: clamp(1.0rem, 1.4vw, 1.25rem);
+        }
+
+        html, body {
+            width: 100vw; height: 100vh; overflow: hidden;
+            background-color: var(--pms-bg);
+            font-family: var(--font-body); color: #333333;
+        }
+
+        .text-fluid-h1 { font-family: var(--font-title); font-size: var(--fluid-h1); font-weight: 900; color: var(--ppgec-brown); line-height: 1.05; letter-spacing: -0.02em; }
+        .text-fluid-h2 { font-family: var(--font-title); font-size: var(--fluid-h2); font-weight: 800; color: var(--ppgec-brown); line-height: 1.1; }
+        .text-fluid-h3 { font-family: var(--font-body); font-size: var(--fluid-h3); font-weight: 700; line-height: 1.2; }
+        .text-fluid-body { font-family: var(--font-body); font-size: var(--fluid-body); font-weight: 500; line-height: 1.4; }
+        .text-fluid-meta { font-family: var(--font-body); font-size: var(--fluid-meta); color: var(--pms-text-muted); font-weight: 600; }
+        .text-fluid-tag { font-family: var(--font-body); font-size: var(--fluid-tag); font-weight: 700; }
+
+        .card-borderless-glass {
+            border: none !important;
+            background-color: var(--pms-card-light);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.06), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-borderless-glass-dark {
+            border: none !important;
+            background-color: var(--pms-card-dark);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-borderless-glass:hover, .card-borderless-glass-dark:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.10);
+        }
+
+        .bg-right-fade {
+            background-repeat: no-repeat;
+            background-position: right center;
+            background-size: cover;
+            position: relative;
+        }
+        .bg-right-fade::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, var(--pms-bg) 20%, rgba(244, 246, 245, 0.65) 50%, rgba(244, 246, 245, 0.15) 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .slide-screen {
+            position: absolute; width: 100%; height: 100%; top: 0; left: 0;
+            opacity: 0; pointer-events: none; z-index: 0;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+            overflow-y: auto;
+        }
+        .slide-screen > * { position: relative; z-index: 2; }
+        .slide-active { opacity: 1; transform: translate3d(0, 0, 0); pointer-events: auto; z-index: 10; }
+        .slide-hidden-left  { opacity: 0; transform: translate3d(-100%, 0, 0); }
+        .slide-hidden-right { opacity: 0; transform: translate3d(100%, 0, 0); }
+        .slide-hidden-up    { opacity: 0; transform: translate3d(0, -100%, 0); }
+        .slide-hidden-down  { opacity: 0; transform: translate3d(0, 100%, 0); }
+
+        .reveal-controls { position: fixed; bottom: 1.25rem; right: 1.5rem; width: 130px; height: 130px; z-index: 1000; }
+        .control-arrow {
+            position: absolute; width: 44px; height: 44px; background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            border-radius: 50%; color: #A1A1A1; font-size: 1.3rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; opacity: 0.25; pointer-events: none;
+            transition: all 0.25s ease; box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+        }
+        .control-arrow.nav-up { top: 0; left: 43px; }
+        .control-arrow.nav-down { bottom: 0; left: 43px; }
+        .control-arrow.nav-left { top: 43px; left: 0; }
+        .control-arrow.nav-right { top: 43px; right: 0; }
+        .control-arrow.nav-enabled { color: var(--ppgec-brown); opacity: 1; pointer-events: auto; }
+        .control-arrow.nav-enabled:hover { background: var(--ppgec-brown); color: #FFFFFF; transform: scale(1.15); }
+    </style>
+</head>
+<body class="w-screen h-screen relative bg-[#F4F6F5]">
+
+    <div class="fixed top-0 left-0 h-2 bg-[#c47a4d] transition-all duration-500 z-[1000]" id="progressBar" style="width: 0%;"></div>
+
+    <div class="fixed bottom-4 left-4 sm:bottom-6 sm:left-8 text-fluid-meta font-bold text-[#333333] bg-white/80 backdrop-blur-md px-4 py-2 rounded-full shadow-md z-[1000] flex items-center space-x-3">
+        <span class="w-3 h-3 rounded-full bg-[#c47a4d]"></span>
+        <span id="slideIndicator">Slide (0,0)</span>
+    </div>
+
+    <div class="reveal-controls">
+        <button id="btn-nav-up" onclick="moveInGrid(0, -1)" class="control-arrow nav-up" aria-label="Up"><i class="fa-solid fa-chevron-up"></i></button>
+        <button id="btn-nav-left" onclick="moveInGrid(-1, 0)" class="control-arrow nav-left" aria-label="Left"><i class="fa-solid fa-chevron-left"></i></button>
+        <button id="btn-nav-right" onclick="moveInGrid(1, 0)" class="control-arrow nav-right" aria-label="Right"><i class="fa-solid fa-chevron-right"></i></button>
+        <button id="btn-nav-down" onclick="moveInGrid(0, 1)" class="control-arrow nav-down" aria-label="Down"><i class="fa-solid fa-chevron-down"></i></button>
+    </div>
+
+    <main class="w-full h-full relative">
+
+        <!-- SLIDE (0,0): WELCOME TITLE COVER -->
+        <div id="slide-0-0" class="slide-screen slide-active flex flex-col justify-between p-6 sm:p-10 md:p-12">
+            <header class="w-full flex justify-between items-center gap-4">
+                <div class="flex items-center space-x-4 sm:space-x-6 bg-white/75 backdrop-blur-md px-6 py-3.5 rounded-2xl shadow-sm">
+                    <img id="img-logo-ufv-0-0" alt="UFV Logo" class="h-10 sm:h-12 w-auto">
+                    <div class="h-10 w-[1px] bg-[#DEDEDE]"></div>
+                    <img id="img-logo-dec-0-0" alt="DEC Logo" class="h-12 sm:h-12 w-auto">
+                </div>
+                <a id="link-pms-portal-0-0" target="_blank" class="block bg-[#FFFFFF]/85 backdrop-blur-md p-4 rounded-2xl shadow-lg hover:scale-105 transition-transform">
+                    <img src="PPGEC2025.png" id="PPGEC" alt="PPGEC Logo" class="h-12 sm:h-16 w-auto">
+                </a>
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center w-full my-auto py-6">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="p-8 sm:p-12 rounded-3xl card-borderless-glass border-l-[16px] border-[#c47a4d]">
+                        <span class="text-fluid-tag text-[#2f80ed] tracking-wider block mb-2 uppercase">Welcome Incoming Students 2026-1</span>
+                        <h1 class="text-fluid-h1 mb-4">GRADUATE ORIENTATION<span class="block text-fluid-h2 text-[#333333] font-bold mt-2">PPGEC UFV Welcome Guide</span></h1>
+                        <p class="text-fluid-body text-[#444444]">Institutional Overview, Academic Norms, Research Ecosystem, and Career Placement.</p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 p-6 sm:p-8 rounded-3xl card-borderless-glass-dark text-white flex flex-col justify-between space-y-6">
+                    <div class="bg-white/85 backdrop-blur-md p-6 rounded-2xl text-center shadow-md">
+                        <img id="qr-presentation-cover-0-0" alt="Access QR Code" class="w-full max-w-[220px] sm:max-w-[280px] lg:max-w-[320px] mx-auto rounded-lg">
+                        <span class="text-fluid-tag text-[#333333] font-bold mt-3 block">Follow On Smartphone</span>
+                    </div>
+                    <div class="text-center space-y-1">
+                        <span class="text-fluid-tag text-[#c47a4d] block">Department of Civil Engineering</span>
+                        <p class="text-fluid-body font-bold text-white">Universidade Federal de Viçosa</p>
+                        <p class="text-fluid-body font-bold text-white">Course Coordinator: Prof. José Maria Franco de Carvalho</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE (1,0): INSTITUTIONAL ECOSYSTEM & CAPES GRADE 6 -->
+        <div id="slide-1-0" class="slide-screen slide-hidden-right flex flex-col justify-between p-6 sm:p-10 md:p-12">
+            <header class="w-full flex justify-between items-center mb-2">
+                <div>
+                    <span class="text-fluid-tag text-[#c47a4d] font-bold tracking-wider">INSTITUTIONAL ECOSYSTEM</span>
+                    <h2 class="text-fluid-h2">UFV, DEC & PPGEC — International Excellence</h2>
+                </div>
+                <img src="ppgec.png" id="img-logo-pms-1-0" alt="PPGEC Logo" class="h-10 sm:h-12 w-auto">
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 my-auto w-full py-2 items-stretch">
+                <!-- Left Card: UFV & DEC Key Stats -->
+                <div class="lg:col-span-5 p-6 rounded-3xl card-borderless-glass space-y-4 flex flex-col justify-between border-l-8 border-[#2f80ed]">
+                    <div>
+                        <span class="text-fluid-tag text-[#2f80ed] font-bold uppercase block mb-1">Universidade Federal de Viçosa</span>
+                        <h3 class="text-fluid-h3 text-[#333333] border-b border-black/10 pb-2">Institutional Strength (Est. 1926)</h3>
+                        <ul class="space-y-2 text-fluid-body text-[#444444] mt-3">
+                            <li>• <strong>Campus Area:</strong> 4,154 ha | 3 Campi</li>
+                            <li>• <strong>Faculty & Staff:</strong> 1,283 Professors | 1,858 Techs</li>
+                            <li>• <strong>Students:</strong> 13,686 Undergrad | 2,799 Grad (58 Programs)</li>
+                            <li>• <strong>DEC Dept (Est. 1978):</strong> 35 Professors across 6 Civil Engineering domains.</li>
+                        </ul>
+                    </div>
+                    <div class="p-3 bg-black/5 rounded-xl text-fluid-meta text-[#555555] text-center">
+                        <i class="fa-solid fa-landmark text-[#2f80ed] mr-1"></i> A century of academic tradition & social impact
+                    </div>
+                </div>
+
+                <!-- Right Card: CAPES Grade 6 Excellence -->
+                <div class="lg:col-span-7 p-6 rounded-3xl card-borderless-glass-dark text-white space-y-4 flex flex-col justify-between border-l-8 border-[#ffd166]">
+                    <div>
+                        <div class="bg-gradient-to-r from-[#901812] to-[#c47a4d] p-4 rounded-2xl text-white shadow-md flex items-center justify-between mb-4">
+                            <div>
+                                <span class="text-fluid-tag text-[#ffd166] font-bold uppercase block">CAPES Quadrennial Evaluation</span>
+                                <h3 class="text-fluid-h2 text-white font-extrabold leading-none">Grade 6 <span class="text-fluid-meta font-normal text-white/80">(International Excellence)</span></h3>
+                            </div>
+                            <i class="fa-solid fa-award text-5xl text-[#ffd166]"></i>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3 text-fluid-body">
+                            <div class="p-3 bg-white/10 rounded-xl">
+                                <span class="font-bold text-[#ffd166] block">Mission:</span>
+                                High-level human resource qualification, cutting-edge research, ethics, and sustainability.
+                            </div>
+                            <div class="p-3 bg-white/10 rounded-xl">
+                                <span class="font-bold text-[#ffd166] block">Vision:</span>
+                                International leadership in Civil Engineering research and technological innovation.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-3 bg-white/10 rounded-xl text-fluid-meta text-center text-[#DEDEDE]">
+                        Pioneering graduate civil engineering education in Minas Gerais state since 1991.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE (2,0): ALUMNI OUTCOMES & CAREER PLACEMENT (WITH BIFURCATIONS) -->
+        <div id="slide-2-0" class="slide-screen slide-hidden-right flex flex-col justify-between p-6 sm:p-10 md:p-12">
+            <header class="w-full flex justify-between items-center mb-2">
+                <div>
+                    <span class="text-fluid-tag text-[#27ae60] font-bold tracking-wider">CAREER IMPACT</span>
+                    <h2 class="text-fluid-h2">Alumni Placement & Employability Profile</h2>
+                </div>
+                <img src="ppgec.png" id="img-logo-pms-2-0" alt="PPGEC Logo" class="h-10 sm:h-12 w-auto">
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 my-auto w-full py-2 items-stretch">
+                <!-- Overview Stats -->
+                <div class="lg:col-span-5 p-6 rounded-3xl card-borderless-glass space-y-4 flex flex-col justify-between">
+                    <div>
+                        <span class="text-fluid-tag text-[#27ae60] font-bold uppercase block mb-1">Global Employability</span>
+                        <h3 class="text-fluid-h3 text-[#333333] border-b border-black/10 pb-2">High-Impact Professional Paths</h3>
+                        <div class="space-y-3 mt-4 text-fluid-body">
+                            <div class="p-3 bg-white/70 rounded-xl border border-black/5">
+                                <span class="font-bold text-[#2f80ed] block">Doctorate (Ph.D.) Graduates:</span>
+                                <strong>67.6%</strong> Public Sector (Universities/IFs) | <strong>25.7%</strong> Private Sector.
+                            </div>
+                            <div class="p-3 bg-white/70 rounded-xl border border-black/5">
+                                <span class="font-bold text-[#c47a4d] block">Master's (M.Sc.) Graduates:</span>
+                                <strong>57.7%</strong> Private Industry | <strong>40.9%</strong> Pursue Ph.D. Degrees.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-3 bg-black/5 rounded-xl text-fluid-meta text-[#555555] text-center">
+                        Explore sector-specific employer breakdowns below.
+                    </div>
+                </div>
+
+                <!-- Vertical Branch Navigation Card -->
+                <div class="lg:col-span-7 p-6 sm:p-8 rounded-3xl card-borderless-glass-dark text-white space-y-5 flex flex-col justify-between">
+                    <div>
+                        <span class="text-fluid-tag text-[#ffd166] block mb-2 uppercase">BIFURCATION BRANCHES (SECTOR BREAKDOWN)</span>
+                        <h3 class="text-fluid-h3 text-white mb-2">Inspect Specific Placement Networks</h3>
+                        <p class="text-fluid-body text-[#DEDEDE]">Navigate vertically down to view institutional logos and pie-chart analytics of M.Sc. and Ph.D. employers.</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4 pt-2">
+                        <button onclick="moveInGrid(0, 1)" class="py-4 px-4 bg-[#2f80ed] hover:bg-[#c47a4d] text-white font-bold rounded-2xl transition-all text-fluid-body shadow-md flex items-center justify-center space-x-2">
+                            <span>Higher Education (Universities)</span> <i class="fa-solid fa-arrow-down"></i>
+                        </button>
+                        <button onclick="moveInGrid(0, 2)" class="py-4 px-4 bg-[#27ae60] hover:bg-[#c47a4d] text-white font-bold rounded-2xl transition-all text-fluid-body shadow-md flex items-center justify-center space-x-2">
+                            <span>Industry & Public Agencies</span> <i class="fa-solid fa-arrow-down"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE (2,1): BIFURCATION Y=1 - HIGHER EDUCATION EMPLOYERS -->
+        <div id="slide-2-1" class="slide-screen slide-hidden-down flex flex-col justify-between p-6 sm:p-10 md:p-12">
+            <header class="w-full flex justify-between items-center mb-4">
+                <div>
+                    <span class="text-fluid-tag text-[#2f80ed]">ACADEMIC PLACEMENT (BRANCH Y=1)</span>
+                    <h2 class="text-fluid-h2">Higher Education & Research Institutes</h2>
+                </div>
+                <button onclick="moveInGrid(0, -1)" class="px-5 py-3 bg-white/75 backdrop-blur-md text-[#c47a4d] font-bold rounded-2xl shadow-sm hover:bg-[#c47a4d] hover:text-white transition-colors text-fluid-tag border border-[#c47a4d]/20 min-h-[48px]">
+                    <i class="fa-solid fa-arrow-up mr-2"></i> Return to Main Overview
+                </button>
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 my-auto w-full items-center py-2">
+                <div class="lg:col-span-7 p-6 rounded-3xl card-borderless-glass space-y-4">
+                    <h3 class="text-fluid-h3 text-[#333333] border-b border-black/10 pb-2">Academic Placement Distribution</h3>
+                    <ul class="space-y-3 text-fluid-body text-[#444444]">
+                        <li>• <strong>Federal Universities (67.4% Ph.D. / 75% M.Sc.):</strong> UFBA, UFOP, UFRRJ, UFRB, UFMT, UNIFAL, UFSJ, UNILAB.</li>
+                        <li>• <strong>Federal Institutes (19.6% Ph.D.):</strong> IFMG, IFNMG, IFIF, IFB.</li>
+                        <li>• <strong>State Universities & Int. (12.9%):</strong> UNIMONTES, UESG, UEMG, International Universities.</li>
+                    </ul>
+                </div>
+
+                <div class="lg:col-span-5 p-6 rounded-3xl card-borderless-glass-dark text-white space-y-4">
+                    <h3 class="text-fluid-h3 text-white border-b border-white/10 pb-2">Key takeaway</h3>
+                    <p class="text-fluid-body text-[#DEDEDE]">Over <strong>92% of Ph.D. graduates</strong> in the public sector are serving as active faculty members and lead researchers across national higher education institutions.</p>
+                    <div class="pt-2 flex justify-between">
+                        <button onclick="moveInGrid(0, -1)" class="text-fluid-tag text-[#2f80ed] hover:underline"><i class="fa-solid fa-arrow-up"></i> Top</button>
+                        <button onclick="moveInGrid(0, 1)" class="text-fluid-tag text-[#27ae60] hover:underline">Next Branch (Industry) <i class="fa-solid fa-arrow-down"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE (2,2): BIFURCATION Y=2 - PRIVATE SECTOR & AGENCIES -->
+        <div id="slide-2-2" class="slide-screen slide-hidden-down flex flex-col justify-between p-6 sm:p-10 md:p-12">
+            <header class="w-full flex justify-between items-center mb-4">
+                <div>
+                    <span class="text-fluid-tag text-[#27ae60]">INDUSTRY PLACEMENT (BRANCH Y=2)</span>
+                    <h2 class="text-fluid-h2">Corporate & Infrastructure Partners</h2>
+                </div>
+                <button onclick="moveInGrid(0, -2)" class="px-5 py-3 bg-white/75 backdrop-blur-md text-[#c47a4d] font-bold rounded-2xl shadow-sm hover:bg-[#c47a4d] hover:text-white transition-colors text-fluid-tag border border-[#c47a4d]/20 min-h-[48px]">
+                    <i class="fa-solid fa-arrow-up mr-2"></i> Return to Main Overview
+                </button>
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 my-auto w-full items-center py-2">
+                <div class="lg:col-span-7 p-6 rounded-3xl card-borderless-glass space-y-4">
+                    <h3 class="text-fluid-h3 text-[#333333] border-b border-black/10 pb-2">Top Industry Employers</h3>
+                    <div class="grid grid-cols-2 gap-3 text-fluid-body text-[#444444]">
+                        <div class="p-3 bg-white/70 rounded-xl"><strong>Engineering Consulting:</strong> 53.8% (M.Sc.) / 26.3% (Ph.D.)</div>
+                        <div class="p-3 bg-white/70 rounded-xl"><strong>Mining & Energy:</strong> VALE, SAMARCO, CSN, Petrobras.</div>
+                        <div class="p-3 bg-white/70 rounded-xl"><strong>Paper & Cellulose:</strong> SUZANO (10.5% Ph.D.).</div>
+                        <div class="p-3 bg-white/70 rounded-xl"><strong>Public Agencies:</strong> DNIT, DER-MG, Prefeituras.</div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 p-6 rounded-3xl card-borderless-glass-dark text-white space-y-4">
+                    <h3 class="text-fluid-h3 text-white border-b border-white/10 pb-2">Market Relevance</h3>
+                    <p class="text-fluid-body text-[#DEDEDE]">PPGEC research directly solves complex technical challenges in structural integrity, mining tailings, asset management, and environmental sanitation.</p>
+                    <div class="pt-2 flex justify-between">
+                        <button onclick="moveInGrid(0, -1)" class="text-fluid-tag text-[#2f80ed] hover:underline"><i class="fa-solid fa-arrow-up"></i> Prev Branch</button>
+                        <button onclick="moveInGrid(0, -2)" class="text-fluid-tag text-[#27ae60] hover:underline">Main Overview <i class="fa-solid fa-angles-up"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE (3,0): INFRASTRUCTURE & RESEARCH GROUPS (WITH BIFURCATIONS) -->
+        <div id="slide-3-0" class="slide-screen slide-hidden-right flex flex-col justify-between p-6 sm:p-10 md:p-12">
+            <header class="w-full flex justify-between items-center mb-2">
+                <div>
+                    <span class="text-fluid-tag text-[#2f80ed] font-bold tracking-wider">RESEARCH INFRASTRUCTURE</span>
+                    <h2 class="text-fluid-h2">Laboratories, Study Spaces & Research Groups</h2>
+                </div>
+                <img src="ppgec.png" id="img-logo-pms-3-0" alt="PPGEC Logo" class="h-10 sm:h-12 w-auto">
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 my-auto w-full py-2 items-stretch">
+                <!-- Overview Card -->
+                <div class="lg:col-span-5 p-6 rounded-3xl card-borderless-glass space-y-4 flex flex-col justify-between">
+                    <div>
+                        <span class="text-fluid-tag text-[#2f80ed] font-bold uppercase block mb-1">World-Class Facilities</span>
+                        <h3 class="text-fluid-h3 text-[#333333] border-b border-black/10 pb-2">Experimental & Computational Hubs</h3>
+                        <p class="text-fluid-body text-[#444444] mt-3">
+                            State-of-the-art multi-user facilities covering materials testing, reaction frames, asphalt rheology, microalgae biorefineries, BIM modeling, and computational mechanics.
+                        </p>
+                    </div>
+                    <div class="p-3 bg-black/5 rounded-xl text-fluid-meta text-[#555555] text-center">
+                        Dedicated graduate study rooms: CCE 325, CCE 318, LEN 120.
+                    </div>
+                </div>
+
+                <!-- Vertical Branch Navigation Card -->
+                <div class="lg:col-span-7 p-6 sm:p-8 rounded-3xl card-borderless-glass-dark text-white space-y-5 flex flex-col justify-between">
+                    <div>
+                        <span class="text-fluid-tag text-[#27ae60] block mb-2 uppercase">EXPLORE FACILITY DIRECTORIES</span>
+                        <h3 class="text-fluid-h3 text-white mb-2">Inspect Specific Lab & Research Units</h3>
+                        <p class="text-fluid-body text-[#DEDEDE]">Navigate vertically down to inspect lab capabilities and registered research/extension groups.</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4 pt-2">
+                        <button onclick="moveInGrid(0, 1)" class="py-4 px-4 bg-[#2f80ed] hover:bg-[#c47a4d] text-white font-bold rounded-2xl transition-all text-fluid-body shadow-md flex items-center justify-center space-x-2">
+                            <span>Laboratory List (LEA, LMC, LBE...)</span> <i class="fa-solid fa-arrow-down"></i>
+                        </button>
+                        <button onclick="moveInGrid(0, 2)" class="py-4 px-4 bg-[#27ae60] hover:bg-[#c47a4d] text-white font-bold rounded-2xl transition-all text-fluid-body shadow-md flex items-center justify-center space-x-2">
+                            <span>Research Groups (SICon, LGA...)</span> <i class="fa-solid fa-arrow-down"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE (3,1): BIFURCATION Y=1 - LABORATORY DIRECTORY -->
+        <div id="slide-3-1" class="slide-screen slide-hidden-down flex flex-col justify-between p-6 sm:p-10 md:p-12">
+            <header class="w-full flex justify-between items-center mb-4">
+                <div>
+                    <span class="text-fluid-tag text-[#2f80ed]">EXPERIMENTAL INFRASTRUCTURE (BRANCH Y=1)</span>
+                    <h2 class="text-fluid-h2">Specialized Engineering Laboratories</h2>
+                </div>
+                <button onclick="moveInGrid(0, -1)" class="px-5 py-3 bg-white/75 backdrop-blur-md text-[#c47a4d] font-bold rounded-2xl shadow-sm hover:bg-[#c47a4d] hover:text-white transition-colors text-fluid-tag border border-[#c47a4d]/20 min-h-[48px]">
+                    <i class="fa-solid fa-arrow-up mr-2"></i> Return to Infrastructure Overview
+                </button>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-auto w-full py-2">
+                <div class="p-5 rounded-2xl card-borderless-glass border-l-4 border-[#c47a4d]">
+                    <h4 class="text-fluid-body font-bold text-[#333333]">Structures & Materials</h4>
+                    <p class="text-fluid-meta text-[#555555]">LBE (Structures), LMC (Construction Mat.), LEM (Mechanical Tests), REM, LCO (Composites).</p>
+                </div>
+                <div class="p-5 rounded-2xl card-borderless-glass border-l-4 border-[#2f80ed]">
+                    <h4 class="text-fluid-body font-bold text-[#333333]">Geotechnics & Pavements</h4>
+                    <p class="text-fluid-meta text-[#555555]">Geotechnics Labs (Advanced Soil Mechanics), LMAM (Asphalt Materials & Mixtures).</p>
+                </div>
+                <div class="p-5 rounded-2xl card-borderless-glass border-l-4 border-[#27ae60]">
+                    <h4 class="text-fluid-body font-bold text-[#333333]">Geomatics & Computation</h4>
+                    <p class="text-fluid-meta text-[#555555]">LEA (Surveying & Cartography), BIM (Information Modeling), MEC (Applied Computational Mechanics).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE (3,2): BIFURCATION Y=2 - RESEARCH GROUPS & SCIENTIFIC OUTPUT -->
+        <div id="slide-3-2" class="slide-screen slide-hidden-down flex flex-col justify-between p-6 sm:p-10 md:p-12">
+            <header class="w-full flex justify-between items-center mb-4">
+                <div>
+                    <span class="text-fluid-tag text-[#27ae60]">SCIENTIFIC NETWORKS (BRANCH Y=2)</span>
+                    <h2 class="text-fluid-h2">Research Groups & High-Impact Publications</h2>
+                </div>
+                <button onclick="moveInGrid(0, -2)" class="px-5 py-3 bg-white/75 backdrop-blur-md text-[#c47a4d] font-bold rounded-2xl shadow-sm hover:bg-[#c47a4d] hover:text-white transition-colors text-fluid-tag border border-[#c47a4d]/20 min-h-[48px]">
+                    <i class="fa-solid fa-arrow-up mr-2"></i> Return to Infrastructure Overview
+                </button>
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 my-auto w-full items-center py-2">
+                <div class="lg:col-span-6 p-6 rounded-3xl card-borderless-glass space-y-3">
+                    <h3 class="text-fluid-h3 text-[#333333] border-b border-black/10 pb-2">Active Research Groups</h3>
+                    <p class="text-fluid-body text-[#444444]">SICon, NEPLAN, LGA, GPHIDRO, SIGENPA, TECHBIM, H2GEO, Microalgae Biorefineries.</p>
+                </div>
+
+                <div class="lg:col-span-6 p-6 rounded-3xl card-borderless-glass-dark text-white space-y-3">
+                    <h3 class="text-fluid-h3 text-white border-b border-white/10 pb-2">Bibliographic Output (2012-2024)</h3>
+                    <div class="grid grid-cols-2 gap-3 text-center">
+                        <div class="bg-white/10 p-3 rounded-xl">
+                            <span class="text-fluid-h2 text-[#ffd166] font-extrabold block">545</span>
+                            <span class="text-fluid-meta">Scientific Papers</span>
+                        </div>
+                        <div class="bg-white/10 p-3 rounded-xl">
+                            <span class="text-fluid-h2 text-[#27ae60] font-extrabold block">312</span>
+                            <span class="text-fluid-meta">Qualis A Papers</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE (4,0): ACADEMIC REGULATIONS & STUDY PLAN DEADLINES -->
+        <div id="slide-4-0" class="slide-screen slide-hidden-right flex flex-col justify-between p-6 sm:p-10 md:p-12">
+            <header class="w-full flex justify-between items-center mb-4">
+                <div>
+                    <span class="text-fluid-tag text-[#c47a4d] font-bold tracking-wider">ACADEMIC REGULATIONS</span>
+                    <h2 class="text-fluid-h2">Study Plan, Credits & Graduation Milestones</h2>
+                </div>
+                <img src="ppgec.png" id="img-logo-pms-4-0" alt="PPGEC Logo" class="h-10 sm:h-12 w-auto">
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 my-auto w-full py-2 items-stretch">
+                <!-- Master's Degree Card -->
+                <div class="p-6 rounded-3xl card-borderless-glass space-y-3 flex flex-col justify-between border-t-4 border-[#2f80ed]">
+                    <div>
+                        <span class="text-fluid-tag text-[#2f80ed] font-bold uppercase block">Master's (M.Sc.)</span>
+                        <h3 class="text-fluid-h3 text-[#333333]">18 Credits + Seminar</h3>
+                        <ul class="space-y-2 text-fluid-body text-[#444444] mt-2">
+                            <li>• <strong>CIV 797 Seminar:</strong> 2nd semester.</li>
+                            <li>• <strong>CIV 799 Research:</strong> From 2nd sem.</li>
+                            <li>• <strong>Duration:</strong> 24 months (Max 36).</li>
+                            <li>• <strong>Article:</strong> 1 submitted paper.</li>
+                        </ul>
+                    </div>
+                    <div class="p-3 bg-black/5 rounded-xl text-fluid-meta text-[#555555]">Regular time: 4 semesters.</div>
+                </div>
+
+                <!-- Doctorate Degree Card -->
+                <div class="p-6 rounded-3xl card-borderless-glass space-y-3 flex flex-col justify-between border-t-4 border-[#c47a4d]">
+                    <div>
+                        <span class="text-fluid-tag text-[#c47a4d] font-bold uppercase block">Doctorate (Ph.D.)</span>
+                        <h3 class="text-fluid-h3 text-[#333333]">12 Credits (+ M.Sc.)</h3>
+                        <ul class="space-y-2 text-fluid-body text-[#444444] mt-2">
+                            <li>• <strong>CIV 797 Seminar:</strong> 3rd semester.</li>
+                            <li>• <strong>Qualification:</strong> By 6th semester.</li>
+                            <li>• <strong>Teaching Internship:</strong> Mandatory.</li>
+                            <li>• <strong>Duration:</strong> 48 months (Max 60).</li>
+                        </ul>
+                    </div>
+                    <div class="p-3 bg-black/5 rounded-xl text-fluid-meta text-[#555555]">Regular time: 8 semesters.</div>
+                </div>
+
+                <!-- Academic Rules Card -->
+                <div class="p-6 rounded-3xl card-borderless-glass-dark text-white space-y-3 flex flex-col justify-between border-t-4 border-[#27ae60]">
+                    <div>
+                        <span class="text-fluid-tag text-[#27ae60] font-bold uppercase block">Mandatory Rules</span>
+                        <h3 class="text-fluid-h3 text-white">English Proficiency</h3>
+                        <ul class="space-y-2 text-fluid-body text-[#DEDEDE] mt-2">
+                            <li>• Submit proficiency proof in Study Plan by <strong>end of 2nd semester</strong>.</li>
+                            <li>• <strong>CRA Requirement:</strong> $\ge 75\%$ overall academic performance index.</li>
+                            <li>• Failure to register CIV 799 causes compulsory dismissal!</li>
+                        </ul>
+                    </div>
+                    <a href="https://ppg.ufv.br/pos-graduacao/scricto-sensu/" target="_blank" class="p-3 bg-white/10 hover:bg-white/20 rounded-xl text-fluid-meta text-center text-white font-bold block border border-white/20">
+                        View Accepted Language Exams <i class="fa-solid fa-external-link ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE (5,0): SCHOLARSHIPS, PROBIBLIO & TECNOPARQ OPPORTUNITIES -->
+        <div id="slide-5-0" class="slide-screen slide-hidden-right flex flex-col justify-between p-6 sm:p-10 md:p-12">
+            <header class="w-full flex justify-between items-center mb-4">
+                <div>
+                    <span class="text-fluid-tag text-[#2f80ed] font-bold tracking-wider">ACADEMIC OPPORTUNITIES</span>
+                    <h2 class="text-fluid-h2">Scholarships, ProBiblio & Innovation Ecosystem</h2>
+                </div>
+                <img src="ppgec.png" id="img-logo-pms-5-0" alt="PPGEC Logo" class="h-10 sm:h-12 w-auto">
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 my-auto w-full py-2 items-stretch">
+                <!-- Scholarships Overview -->
+                <div class="p-6 rounded-3xl card-borderless-glass space-y-3 flex flex-col justify-between">
+                    <div>
+                        <span class="text-fluid-tag text-[#2f80ed] font-bold uppercase block">Scholarships</span>
+                        <h3 class="text-fluid-h3 text-[#333333]">Funding Allocations</h3>
+                        <p class="text-fluid-body text-[#444444] mt-2">
+                            CAPES Demanda Social (14 MS, 18 DS), FAPEMIG PAPG, CNPq, and project-based grants (DNIT, FAPEMIG, VALE, Carrefour).
+                        </p>
+                    </div>
+                    <div class="p-3 bg-black/5 rounded-xl text-fluid-meta text-[#555555]">Requires full-time, on-campus dedication.</div>
+                </div>
+
+                <!-- ProBiblio Initiative -->
+                <div class="p-6 rounded-3xl card-borderless-glass space-y-3 flex flex-col justify-between">
+                    <div>
+                        <span class="text-fluid-tag text-[#c47a4d] font-bold uppercase block">ProBiblio Program</span>
+                        <h3 class="text-fluid-h3 text-[#333333]">Scientific Publishing Support</h3>
+                        <p class="text-fluid-body text-[#444444] mt-2">
+                            Aims to enhance academic writing skills in English, support paper preparation, and boost publication impact.
+                        </p>
+                    </div>
+                    <div class="p-3 bg-black/5 rounded-xl text-fluid-meta text-[#555555]">Robust academic CV enhancement.</div>
+                </div>
+
+                <!-- TecnoPARQ & Entrepreneurship -->
+                <div class="p-6 rounded-3xl card-borderless-glass-dark text-white space-y-3 flex flex-col justify-between">
+                    <div>
+                        <span class="text-fluid-tag text-[#27ae60] font-bold uppercase block">tecnoPARQ UFV</span>
+                        <h3 class="text-fluid-h3 text-white">Technological Base</h3>
+                        <p class="text-fluid-body text-[#DEDEDE] mt-2">
+                            Support for patent development, academic startups, prototype testing, and business models in civil engineering.
+                        </p>
+                    </div>
+                    <div class="p-3 bg-white/10 rounded-xl text-fluid-meta text-center text-white">Prototyping & testing nucleus.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE (6,0): INTERNATIONALIZATION & SANDWICH PH.D. -->
+        <div id="slide-6-0" class="slide-screen slide-hidden-right flex flex-col justify-between p-6 sm:p-10 md:p-12">
+            <header class="w-full flex justify-between items-center mb-4">
+                <div>
+                    <span class="text-fluid-tag text-[#27ae60] font-bold tracking-wider">GLOBAL MOBILITY</span>
+                    <h2 class="text-fluid-h2">International Mobility & Joint Degrees</h2>
+                </div>
+                <img src="ppgec.png" id="img-logo-pms-6-0" alt="PPGEC Logo" class="h-10 sm:h-12 w-auto">
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 my-auto w-full items-center py-4">
+                <div class="lg:col-span-7 p-6 sm:p-8 rounded-3xl card-borderless-glass space-y-4">
+                    <h3 class="text-fluid-h3 text-[#333333] border-b border-black/10 pb-2">Global Research Opportunities</h3>
+                    <ul class="space-y-3 text-fluid-body text-[#444444]">
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-solid fa-plane-departure text-[#2f80ed] mt-1"></i>
+                            <span><strong>CAPES PDSE Program:</strong> Sandwich Doctorate grants for 6 to 12 months abroad in top world laboratories.</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-solid fa-graduation-cap text-[#27ae60] mt-1"></i>
+                            <span><strong>Dual Degree Agreements:</strong> Possibility of co-advised joint doctoral degrees with partner institutions worldwide.</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fa-solid fa-globe text-[#c47a4d] mt-1"></i>
+                            <span><strong>UFV International Office (DRI):</strong> Institutional support for exchange calls and language preparation.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="lg:col-span-5 p-6 sm:p-8 rounded-3xl card-borderless-glass-dark text-white space-y-6 text-center">
+                    <i class="fa-solid fa-[#000] fa-earth-americas text-6xl text-[#ffd166]"></i>
+                    <div>
+                        <span class="text-fluid-tag text-[#DEDEDE] block">PLAN EARLY</span>
+                        <h3 class="text-fluid-h2 text-white">Align with Advisor</h3>
+                        <p class="text-fluid-body text-[#DEDEDE] mt-2">Ph.D. candidates should discuss sandwich research plans during their 1st academic year.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE (7,0): MANDATORY ADMINISTRATIVE CHECKLIST -->
+        <div id="slide-7-0" class="slide-screen slide-hidden-right flex flex-col justify-between p-6 sm:p-10 md:p-12">
+            <header class="w-full flex justify-between items-center mb-4">
+                <div>
+                    <span class="text-fluid-tag text-[#c47a4d] font-bold tracking-wider">ACTION ITEMS</span>
+                    <h2 class="text-fluid-h2">Mandatory Incoming Student Checklist</h2>
+                </div>
+                <img src="ppgec.png" id="img-logo-pms-7-0" alt="PPGEC Logo" class="h-10 sm:h-12 w-auto">
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 my-auto w-full items-center py-2">
+                <div class="lg:col-span-8 p-6 sm:p-8 rounded-3xl card-borderless-glass space-y-4">
+                    <h3 class="text-fluid-h3 text-[#333333] border-b border-black/10 pb-2">Immediate Administrative Steps</h3>
+                    <ol class="space-y-2.5 text-fluid-body text-[#444444] list-decimal list-inside">
+                        <li><strong>Institutional Email:</strong> Activate <code>@ufv.br</code> account and update AcademicoPG profile.</li>
+                        <li><strong>Lattes Curriculum:</strong> Update Lattes CV and send direct link to PPGEC secretariat.</li>
+                        <li><strong>ORCID & Social Networks:</strong> Send ORCID ID, LinkedIn, and ResearchGate URLs.</li>
+                        <li><strong>Website Photo:</strong> Submit professional photo for student page (or default avatar).</li>
+                        <li><strong>Self-Assessment Survey:</strong> Fill out PPGEC institutional self-evaluation form when requested.</li>
+                    </ol>
+                </div>
+
+                <div class="lg:col-span-4 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[#c47a4d] to-[#901812] text-white shadow-xl space-y-4 text-center">
+                    <i class="fa-solid fa-[#000] fa-list-check text-5xl text-white"></i>
+                    <h3 class="text-fluid-h3 text-white">Official Notices</h3>
+                    <p class="text-fluid-body text-white/90">Official communication is conducted <strong>exclusively via institutional email</strong> (@ufv.br).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE (8,0): CLOSING & INSTITUTIONAL CONTACTS -->
+        <div id="slide-8-0" class="slide-screen slide-hidden-right flex flex-col justify-between p-6 sm:p-10 md:p-12">
+            <header class="w-full flex justify-between items-center mb-2">
+                <div>
+                    <span class="text-fluid-tag text-[#2f80ed] font-bold tracking-wider">WELCOME TO PPGEC</span>
+                    <h2 class="text-fluid-h2">Program Contacts & Official Channels</h2>
+                </div>
+                <img src="ppgec.png" id="img-logo-pms-8-0" alt="PPGEC Logo" class="h-10 sm:h-12 w-auto">
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 my-auto w-full py-2 items-stretch">
+                <!-- Course Coordinator Card -->
+                <div class="lg:col-span-4 p-5 sm:p-6 rounded-3xl card-borderless-glass space-y-4 flex flex-col justify-between">
+                    <div>
+                        <span class="text-fluid-tag text-[#c47a4d] font-bold uppercase tracking-wider block mb-2">Course Coordinator</span>
+                        <div class="flex items-center space-x-4 mb-3">
+                            <img src="https://posengenhariacivil.ufv.br/wp-content/uploads/2024/11/JMFC-e1731326601639.jpg" id="img-coordinator-8-0" alt="Prof. José Maria Franco de Carvalho" class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover shadow-md border-2 border-[#c47a4d]/30">
+                            <div>
+                                <h3 class="text-fluid-h3 text-[#333333] font-bold">Prof. José Maria Franco de Carvalho</h3>
+                                <p class="text-fluid-meta text-[#555555]">PPGEC Course Coordinator</p>
+                            </div>
+                        </div>
+                        <div class="space-y-2 text-fluid-body text-[#444444] pt-2 border-t border-black/10">
+                            <p class="flex items-center">
+                                <i class="fa-solid fa-phone text-[#c47a4d] w-6 mr-2 text-center"></i>
+                                <span>(31) 3612-6518</span>
+                            </p>
+                            <p class="flex items-center">
+                                <i class="fa-solid fa-envelope text-[#c47a4d] w-6 mr-2 text-center"></i>
+                                <a href="mailto:josemaria.carvalho@ufv.br" class="text-[#2f80ed] font-semibold hover:underline">josemaria.carvalho@ufv.br</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="p-3 bg-black/5 rounded-xl text-fluid-meta text-[#555555] text-center">
+                        <i class="fa-solid fa-user-tie text-[#c47a4d] mr-1"></i> Academic Leadership
+                    </div>
+                </div>
+
+                <!-- Program Secretariat Card -->
+                <div class="lg:col-span-4 p-5 sm:p-6 rounded-3xl card-borderless-glass space-y-4 flex flex-col justify-between">
+                    <div>
+                        <span class="text-fluid-tag text-[#2f80ed] font-bold uppercase tracking-wider block mb-2">Graduate Secretariat</span>
+                        <div class="flex items-center space-x-4 mb-3">
+                            <img src="https://posengenhariacivil.ufv.br/wp-content/uploads/2026/06/CKL-e1780763252569.jpg" id="img-secretariat-8-0" alt="PPGEC Secretariat" class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl object-cover shadow-md border-2 border-[#2f80ed]/30">
+                            <div>
+                                <h3 class="text-fluid-h3 text-[#333333] font-bold">PPGEC Secretariat</h3>
+                                <p class="text-fluid-meta text-[#555555]">Administrative Support</p>
+                            </div>
+                        </div>
+                        <div class="space-y-2 text-fluid-body text-[#444444] pt-2 border-t border-black/10">
+                            <p class="flex items-center">
+                                <i class="fa-solid fa-phone text-[#2f80ed] w-6 mr-2 text-center"></i>
+                                <span>(31) 3612-6105</span>
+                            </p>
+                            <p class="flex items-center">
+                                <i class="fa-solid fa-envelope text-[#2f80ed] w-6 mr-2 text-center"></i>
+                                <a href="mailto:secretaria.ppgec@ufv.br" class="text-[#2f80ed] font-semibold hover:underline">secretaria.ppgec@ufv.br</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="p-3 bg-black/5 rounded-xl text-fluid-meta text-[#555555] text-center">
+                        <i class="fa-solid fa-headset text-[#2f80ed] mr-1"></i> Student Service & Registration
+                    </div>
+                </div>
+
+                <!-- Web Portal & Social Media Card -->
+                <div class="lg:col-span-4 p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-[#2f80ed] to-[#1c4ed8] text-white shadow-xl space-y-4 flex flex-col justify-between border-2 border-white/20">
+                    <div>
+                        <span class="text-fluid-tag bg-white/20 px-3 py-1 rounded-full font-bold uppercase tracking-wider block w-max mb-2">Stay Connected</span>
+                        <h3 class="text-fluid-h3 text-white border-b border-white/20 pb-2 flex items-center">
+                            <i class="fa-solid fa-globe text-white mr-2"></i>Official Channels
+                        </h3>
+                        <p class="text-fluid-body text-white/90 mt-2">
+                            Access our official portal for regulations, forms, and defense schedules, or follow our social media channels:
+                        </p>
+                    </div>
+
+                    <div class="space-y-2.5 pt-1">
+                        <a href="https://posengenhariacivil.ufv.br/" target="_blank" class="block bg-white text-[#1c4ed8] hover:bg-white/90 p-3 rounded-xl text-center text-fluid-body font-bold transition-all shadow-md">
+                            <i class="fa-solid fa-house-laptop mr-2"></i> Official Program Webpage
+                        </a>
+                        <div class="grid grid-cols-2 gap-2">
+                            <a href="https://www.linkedin.com/in/ppgecufv/" target="_blank" class="bg-white/10 hover:bg-white/20 p-2.5 rounded-xl text-center text-fluid-meta font-bold transition-all border border-white/30 text-white flex items-center justify-center">
+                                <i class="fa-brands fa-linkedin mr-1.5 text-lg"></i> LinkedIn
+                            </a>
+                            <a href="https://www.instagram.com/ppgec.ufv/" target="_blank" class="bg-white/10 hover:bg-white/20 p-2.5 rounded-xl text-center text-fluid-meta font-bold transition-all border border-white/30 text-white flex items-center justify-center">
+                                <i class="fa-brands fa-instagram mr-1.5 text-lg"></i> Instagram
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        const slideGrid = { 
+            '0,0': 'slide-0-0',
+            '1,0': 'slide-1-0',
+            '2,0': 'slide-2-0',
+            '2,1': 'slide-2-1',
+            '2,2': 'slide-2-2',
+            '3,0': 'slide-3-0',
+            '3,1': 'slide-3-1',
+            '3,2': 'slide-3-2',
+            '4,0': 'slide-4-0',
+            '5,0': 'slide-5-0',
+            '6,0': 'slide-6-0',
+            '7,0': 'slide-7-0',
+            '8,0': 'slide-8-0'
+        };
+
+        let currentX = 0, currentY = 0;
+
+        function hasSlide(x, y) { return !!slideGrid[`${x},${y}`]; }
+
+        function initializeAssets() {
+            const logoUfv00 = document.getElementById('img-logo-ufv-0-0');
+            if (logoUfv00) logoUfv00.src = COURSE_ASSETS.logos.ufv;
+
+            const logoDec00 = document.getElementById('img-logo-dec-0-0');
+            if (logoDec00) logoDec00.src = COURSE_ASSETS.logos.dec;
+
+            Object.keys(slideGrid).forEach(key => {
+                const bgKey = key.replace(',', '_');
+                const slideEl = document.getElementById(slideGrid[key]);
+                const bgUrl = COURSE_ASSETS.slideBackgrounds[bgKey];
+
+                const logoPms = document.getElementById(`img-logo-pms-${bgKey}`);
+                if (logoPms) logoPms.src = COURSE_ASSETS.logos.pms;
+
+                if (slideEl) {
+                    if (bgUrl && bgUrl.trim() !== "") {
+                        slideEl.style.backgroundImage = `url('${bgUrl}')`;
+                        slideEl.classList.add('bg-right-fade');
+                    } else {
+                        slideEl.style.backgroundImage = 'none';
+                        slideEl.classList.remove('bg-right-fade');
+                    }
+                }
+            });
+
+            const linkPortal00 = document.getElementById('link-pms-portal-0-0');
+            if (linkPortal00) linkPortal00.href = COURSE_ASSETS.externalLinks.ppgecPortal;
+
+            const qrCover00 = document.getElementById('qr-presentation-cover-0-0');
+            if (qrCover00) qrCover00.src = COURSE_ASSETS.qrCodeGenerator(COURSE_ASSETS.externalLinks.presentationAccess);
+        }
+
+        function updateUI() {
+            const keysHorizontal = Object.keys(slideGrid).filter(k => k.endsWith(',0'));
+            const totalH = keysHorizontal.length;
+            document.getElementById('progressBar').style.width = `${(currentX / Math.max(totalH - 1, 1)) * 100}%`;
+            document.getElementById('slideIndicator').innerText = `Slide (${currentX}, ${currentY})`;
+            
+            const arrows = { 'up': [0,-1], 'down': [0,1], 'left': [-1,0], 'right': [1,0] };
+            for (let d in arrows) {
+                const el = document.getElementById(`btn-nav-${d}`);
+                if (el) el.classList.toggle('nav-enabled', hasSlide(currentX + arrows[d][0], currentY + arrows[d][1]));
+            }
+        }
+
+        function moveInGrid(dx, dy) {
+            const nx = currentX + dx, ny = currentY + dy;
+            if (hasSlide(nx, ny)) {
+                const cur = document.getElementById(slideGrid[`${currentX},${currentY}`]);
+                const nxt = document.getElementById(slideGrid[`${nx},${ny}`]);
+                cur.classList.remove('slide-active');
+                
+                if (dx > 0) cur.classList.add('slide-hidden-left');
+                else if (dx < 0) cur.classList.add('slide-hidden-right');
+                else if (dy > 0) cur.classList.add('slide-hidden-down');
+                else if (dy < 0) cur.classList.add('slide-hidden-up');
+
+                nxt.classList.remove('slide-hidden-left', 'slide-hidden-right', 'slide-hidden-up', 'slide-hidden-down');
+                nxt.classList.add('slide-active');
+                currentX = nx; currentY = ny;
+                updateUI();
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (['INPUT','TEXTAREA'].includes(document.activeElement.tagName)) return;
+            if (e.key === 'ArrowRight' || e.key === ' ') moveInGrid(1, 0);
+            else if (e.key === 'ArrowLeft') moveInGrid(-1, 0);
+            else if (e.key === 'ArrowUp') moveInGrid(0, -1);
+            else if (e.key === 'ArrowDown') moveInGrid(0, 1);
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeAssets();
+            updateUI();
+        });
+    </script>
+</body>
+</html>
